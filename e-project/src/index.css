@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+.max-container {
+    @apply mx-auto max-w-[1320px] px-6;
+}
+
+
+.hero_img {
+    background-image: url(../src/assets/hero_img.png);
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size:cover;
+    height: 90vh;
+}
+
+@media only screen and (max-width: 1200px) {
+    .hero_img {
+        height: 70vh;
+    }
+}
+@media only screen and (max-width: 1024px) {
+    .hero_img {
+        background-image: url(../src/assets/hero_mobile.png);
+        background-position: bottom;
+        background-repeat: no-repeat;
+        background-size:cover;
+    }
+}
+
