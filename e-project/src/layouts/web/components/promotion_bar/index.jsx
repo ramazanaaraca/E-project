@@ -1,5 +1,5 @@
 import Ticket from '~/assets/free_ticket.svg'
-import Arrow from '~/assets/Arrow.svg'
+import Arrow from '~/assets/arrow.svg'
 import {Link} from 'react-router-dom'
 import { useState } from 'react'
 
