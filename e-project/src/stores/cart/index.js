@@ -1,7 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    cartItems: localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : [],
+    cartItems: (() => {
+        try {
+          const storedCartItems = JSON.parse(localStorage.getItem('cartItems'));
+          return Array.isArray(storedCartItems) ? storedCartItems : [];
+        } catch (error) {
+          console.error('Error parsing cart items from localStorage:', error);
+          return [];
+        }
+      })(),
+      
     cartTotalAmount: 0
 }
 
@@ -40,6 +49,7 @@ const productcard = createSlice({
         
             state.cartItems = updatedCart;
         
+            
             localStorage.setItem('cartItems', JSON.stringify(updatedCart));
         },
 

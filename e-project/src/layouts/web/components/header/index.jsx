@@ -12,16 +12,16 @@ import classNames from "classnames"
 function Header() {
 
     const user = useAuth()
+    const location = useLocation()
 
-    const match = useLocation()
-
-    
+    const isShopPage = location.pathname.startsWith('/shop');
+    const isProfilePage = location.pathname.startsWith('/profile');
 
     return (
         <Wrapper
         classname={classNames('bg-orange py-[18px]' , 
-        {
-            '!bg-white': match.pathname.startsWith('/profile') 
+        {   
+            '!bg-white': isShopPage || isProfilePage ,
         }
         )}>
             <div className="flex items-center justify-between">
@@ -41,7 +41,7 @@ function Header() {
                                 SHOP_LINK.map((shop , index) => (
                                     <Link
                                     key={index}
-                                    to={shop.to}
+                                    to={shop.path}
                                     className="hover:bg-[#FFAB00] transition-colors w-full block rounded py-1 px-1"
                                     >{shop.title}
                                     </Link>

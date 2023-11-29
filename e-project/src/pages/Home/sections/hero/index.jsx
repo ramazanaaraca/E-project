@@ -16,7 +16,7 @@ function Hero() {
                         <p className="lg:text-xl text-base font-normal mb-4 mt-2">Experience music like never before</p>
                         <Button
                         as={Link}
-                        to='/'
+                        to='/shop'
                         > 
                             Shop Now                        
                         </Button>

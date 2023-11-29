@@ -2,17 +2,19 @@ import Product from '~/assets/new_product.png'
 import Heart from '~/assets/heart.svg'
 import Star from '~/assets/black_star.svg'
 import Button from '../button'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { PropTypes } from "prop-types"
 import { addWishList } from '~/stores/wishlist/actions'
-import { useWishlist } from '~/stores/wishlist/hooks'
 import { addToCard } from '../../stores/cart/actions'
+import { useAuth } from '../../stores/auth/hooks'
+
 
 
 function Card({item}) {
+    
+    const navigate = useNavigate();
 
-    
-    
+    const user  = useAuth();
 
     const add = (item) => {
         addWishList(item);
@@ -26,17 +28,20 @@ function Card({item}) {
         <>
             <div className='flex flex-col gap-y-3 items-start group'>
                 <div className='relative inline-block w-full'>
-                    <Link to={item.path} className='relative z-[99] block'><img src={item.img} alt="product" className='w-full object-cover'  /></Link>
+                    <Link to={item.path} className='relative z-[9] block'><img src={item.img} alt="product" className='w-full object-cover'  /></Link>
                     <div className='absolute z-1 top-0 p-4 w-full flex flex-col h-full'>
                         <div className='flex items-center justify-between'>
-                            <div className='px-4 h-6 lg:text-base text-sm bg-white rounded  font-bold flex items-center shadow-custom relative z-[999]'>{item.sub}</div>
-                            <button onClick={() => add(item)} className='p-1.5 rounded-full relative z-[999] bg-white transition-all opacity-0 duration-300  group-hover:opacity-100 shadow-custom'>
+                            <div className='px-4 h-6 lg:text-base text-sm bg-white rounded  font-bold flex items-center shadow-custom relative z-[9]'>{item.sub}</div>
+                            <button onClick={
+                                () => user ? add(item) : navigate('/login')
+                                } className='p-1.5 rounded-full relative z-[9999] bg-white transition-all opacity-0 duration-300  group-hover:opacity-100 shadow-custom'>
                                 <img src={Heart} alt="wishicon" width={20} height={20} /> 
                             </button> 
                         </div> 
                         <div className='mt-auto transition-all relative z-[999] opacity-0 group-hover:opacity-100 duration-300 shadow-custom'>
                             <Button
-                            onClick={() => addProduct(item)}
+                            onClick={() =>  addProduct(item) } 
+                            
                             size='full'
                             >
                             Add to cart

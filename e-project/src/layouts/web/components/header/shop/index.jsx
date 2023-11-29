@@ -6,6 +6,7 @@ import { calcTotalAmount } from '~/stores/cart/actions'
 import { useEffect } from 'react'
 import { useCartItems } from '~/stores/cart/hooks'
 import { useCartTotalAmount } from '~/stores/cart/hooks'
+import classNames from 'classnames'
 
 function Shop() {
 
@@ -20,7 +21,14 @@ function Shop() {
   return (
     <>
         <Popover>
-          <Popover.Button className='block outline-none'><img src={Shopsvg} alt="shop" width={24} height={24} /></Popover.Button>
+          <Popover.Button className='outline-none flex gap-0.5 items-center relative'>
+              <img src={Shopsvg} alt="shop" width={24} height={24} />
+              <div className={classNames('w-4 h-4  rounded-full text-[10px] flex bg-black text-white items-center justify-center absolute -top-1 -right-2', 
+                {
+                  'hidden' : cartItems.length === 0 ,
+                }
+              )}>{cartItems.length}</div>
+            </Popover.Button>
           <Popover.Overlay className="fixed inset-0 bg-black opacity-30 z-[99] " />
             <Transition className="fixed z-[999] max-w-[413px] w-full bg-white top-0 right-0"
             enter="transition duration-300 ease-out"
@@ -36,7 +44,6 @@ function Shop() {
                   <div>
                       {
                          cartItems?.map(productcard => <ShopCart key={productcard?.id} productcard={productcard} />) 
-
                       }
                   </div>
                   <div className='mt-auto'>
