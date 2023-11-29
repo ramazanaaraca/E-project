@@ -1,13 +1,13 @@
 import Wrapper from "~/components/wrapper"
 import Breadcumb from "~/components/breadcumb"
 import { useLocation } from 'react-router-dom';
-import Card from '~/components/Card'
 import { BEST } from "~/fake-api/best";
 import { LuSettings2 } from "react-icons/lu";
 import { CATEGORIES } from "~/fake-api/filter/produt";
 import { PRICE } from "~/fake-api/filter/price";
 import { useEffect, useState } from "react";
 import Newsletter from "../Home/sections/newsletter";
+import Card from "../../components/card";
   
 
 function Shop() {
@@ -20,7 +20,7 @@ function Shop() {
     const [categories, setCategories] = useState([]);
     const [selectedCategories, setSelectedCategories] = useState([]);
     const [filteredProductList, setFilteredProductList] = useState([]);
-    const [selectedPriceRange , setselectedPriceRange] = useState([])
+    // const [selectedPriceRange , setselectedPriceRange] = useState([])
 
     const addCategory = (category) => {
         if(!selectedCategories.includes(category)){
@@ -48,7 +48,7 @@ function Shop() {
     const getProducts = () => {
         
         setProductList(BEST);
-        setselectedPriceRange([...BEST])
+       // setselectedPriceRange([...BEST])
         setFilteredProductList([...BEST]);
     }
 
