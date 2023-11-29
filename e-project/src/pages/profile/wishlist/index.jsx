@@ -1,7 +1,9 @@
 import { useWishlist } from "~/stores/wishlist/hooks"
 import Wish from "./item"
+import { useAuth } from "../../../stores/auth/hooks"
 
 function Wishlist() {
+    const user = useAuth()
     const {favorites} = useWishlist()
     return(
         <>
@@ -13,7 +15,7 @@ function Wishlist() {
             </ul>
             <div className="flex flex-col gap-3 py-6">
             {
-                favorites?.map((wishlist) => {
+                user && favorites?.map((wishlist) => {
                     return <Wish key={wishlist?.id} wishlist={wishlist} />
                 })
             }

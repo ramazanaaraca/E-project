@@ -33,7 +33,8 @@ function Card({item , wishlist }) {
         return favorites.map(item => item.id)
       };
       
-      
+      const storedWishlist = localStorage.getItem('wishlist');
+    console.log('Stored Wishlist:', storedWishlist);
     
     return(
         <>
@@ -45,9 +46,9 @@ function Card({item , wishlist }) {
                             <div className='px-4 h-6 lg:text-base text-sm bg-white rounded  font-bold flex items-center shadow-custom relative z-[9]'>{item.sub}</div>
                             <button onClick={() => user ? add(item) : navigate('/login') }
                                 className={classNames('p-1.5 rounded-full relative z-[9999] bg-white transition-all opacity-0 duration-300  group-hover:opacity-100 shadow-custom',{
-                                    '!bg-black ' :  checkIfIncludes().includes(item.id)
+                                    '!bg-black ' : user && checkIfIncludes().includes(item.id) 
                                 })}>
-                                <img src={ checkIfIncludes().includes(item.id) ? HeartWhite : Heart} alt="wishicon" width={20} height={20} /> 
+                                <img src={ user && checkIfIncludes().includes(item.id) ? HeartWhite : Heart} alt="wishicon" width={20} height={20} /> 
                             </button> 
                         </div> 
                         <div className='mt-auto transition-all relative z-[999] opacity-0 group-hover:opacity-100 duration-300 shadow-custom'>
