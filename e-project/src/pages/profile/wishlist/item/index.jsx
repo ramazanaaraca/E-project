@@ -1,10 +1,15 @@
 import Button from "~/components/button";
 import { removeWishList } from "~/stores/wishlist/actions";
 import ExList from '~/assets/ex.svg'
+import { useBreakpoint } from '~/hooks/use-breakpoint';
+import  PropTypes  from "prop-types";
 
 function Wish({wishlist}) {
 
     const {  img, name, price } = wishlist;
+
+    const { breakpoint } = useBreakpoint();
+
 
     return(
         <>
@@ -14,7 +19,7 @@ function Wish({wishlist}) {
                     <img src={ExList} alt="ex" width={24} height={24} />
                 </button>
             </div>
-            <div className="flex items-center justify-between flex-1">
+            <div className="flex lg:flex-row flex-col lg:items-center justify-between flex-1">
                 <div className="flex items-center gap-3">
                     <img src={img} alt="" width={60} height={72} />
                     <div className="flex flex-col gap-2">
@@ -25,13 +30,17 @@ function Wish({wishlist}) {
                 <div>
                     <span className="text-sm">{price}</span>
                 </div>
-                <div>
-                    <Button size='small'>Add To Cart</Button>
+                <div className="">
+                    <Button size={breakpoint === 'desktop' ? 'small' : 'full' }  >Add To Cart</Button>
                 </div>
             </div>
         </div>
         </>
     )
+}
+
+Wish.propTypes = {
+    children: PropTypes.array,
 }
 
 export default Wish

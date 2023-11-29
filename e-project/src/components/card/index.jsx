@@ -22,7 +22,7 @@ function Card({item , wishlist }) {
 
     const add = (item) => {
         addWishList(item);
-        console.log(favorites)
+        //console.log(favorites)
     };
 
     const addProduct = (item) => {
@@ -34,7 +34,7 @@ function Card({item , wishlist }) {
       };
       
       const storedWishlist = localStorage.getItem('wishlist');
-    console.log('Stored Wishlist:', storedWishlist);
+      //console.log('Stored Wishlist:', storedWishlist);
     
     return(
         <>

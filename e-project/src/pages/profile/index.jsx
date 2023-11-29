@@ -1,16 +1,28 @@
 import { Outlet } from "react-router-dom"
 import Wrapper from "~/components/wrapper"
-import { useAuth } from "~/stores/auth/hooks"
-import Avatar from "~/assets/avatar.png"
-import Camera from "~/assets/camera.svg"
 import { PROFILE_LIST } from "~/utils/consts/profilelink"
 import { NavLink } from "react-router-dom"
 import classNames from "classnames"
+import { useEffect, useState   } from "react"
+import ImgFıle from "../../components/imgfile"
 
 
 function Profile() {
 
-    const user = useAuth()
+    const [userData, setUserData] = useState();
+
+    useEffect(() => {
+        
+        const storedData = localStorage.getItem('user');
+    
+        
+        if (storedData) {
+          const parsedData = JSON.parse(storedData);
+          setUserData(parsedData);
+        }
+      }, []);
+
+      
 
     return(
         <>
@@ -18,21 +30,21 @@ function Profile() {
             classname='py-20'
             >
                 <div >
-                    <h6 className="text-center text-5xl font-medium">My Account</h6>
-                    <div className="lg:grid lg:grid-cols-3  py-20">
-                        <div className="col-span-1">
+                    <h6 className="text-center lg:text-5xl text-3xl font-medium">My Account</h6>
+                    <div className="lg:grid lg:grid-cols-3 py-20">
+                        <div className="lg:col-span-1">
                             <aside className="bg-[#F3F5F7] px-4 py-10 flex flex-col gap-10 rounded-lg">
                                 <div className="flex flex-col items-center justify-center gap-2">
-                                    <div className="relative">
-                                        <img src={Avatar} alt="" className="max-w-18 max-h-18" />
-                                        <div className="absolute right-0 -bottom-1">
-                                            <label className="bg-black p-1.5 rounded-full border-2 border-white block cursor-pointer">
-                                                <img src={Camera} alt="" width={20} height={20}/>
-                                                <input type="file" className="hidden"/>
-                                            </label>
-                                        </div>
+                                    <ImgFıle />
+                                    <div className="text-xl font-medium">
+                                    {userData ? (
+                                        <>
+                                        <p>{userData.username}</p>
+                                        </>
+                                    ) : (
+                                        <p>No user data found in localStorage.</p>
+                                    )}
                                     </div>
-                                    <div className="text-xl font-medium">{user.username}</div>
                                 </div>
                                 <nav>
                                     <ul className="flex flex-col gap-3">
@@ -56,10 +68,10 @@ function Profile() {
                                 </nav>
                             </aside>
                         </div>
-                        <div className="col-span-2 px-16">
-                        <div className="mb-10 text-xl font-medium">
-                            Your 
-                        </div>
+                        <div className="lg:col-span-2 lg:px-16 mt-10">
+                            <div className="mb-10 text-xl font-medium">
+                            Account Details 
+                            </div>
                             <Outlet />
                         </div>
                     </div>
