@@ -1,5 +1,6 @@
-import Product from '~/assets/new_product.png'
+import { useWishlist } from '../../stores/wishlist/hooks'
 import Heart from '~/assets/heart.svg'
+import HeartWhite from '~/assets/heartwhite.svg'
 import Star from '~/assets/black_star.svg'
 import Button from '../button'
 import { Link, useNavigate } from 'react-router-dom'
@@ -7,10 +8,13 @@ import { PropTypes } from "prop-types"
 import { addWishList } from '~/stores/wishlist/actions'
 import { addToCard } from '../../stores/cart/actions'
 import { useAuth } from '../../stores/auth/hooks'
+import classNames from 'classnames'
 
 
 
-function Card({item}) {
+function Card({item , wishlist }) {
+
+    const {favorites} = useWishlist()
     
     const navigate = useNavigate();
 
@@ -18,11 +22,18 @@ function Card({item}) {
 
     const add = (item) => {
         addWishList(item);
+        console.log(favorites)
     };
 
     const addProduct = (item) => {
         addToCard(item);
     };
+
+    const checkIfIncludes = () => {
+        return favorites.map(item => item.id)
+      };
+      
+      
     
     return(
         <>
@@ -33,8 +44,10 @@ function Card({item}) {
                         <div className='flex items-center justify-between'>
                             <div className='px-4 h-6 lg:text-base text-sm bg-white rounded  font-bold flex items-center shadow-custom relative z-[9]'>{item.sub}</div>
                             <button onClick={() => user ? add(item) : navigate('/login') }
-                                className='p-1.5 rounded-full relative z-[9999] bg-white transition-all opacity-0 duration-300  group-hover:opacity-100 shadow-custom'>
-                                <img src={Heart} alt="wishicon" width={20} height={20} /> 
+                                className={classNames('p-1.5 rounded-full relative z-[9999] bg-white transition-all opacity-0 duration-300  group-hover:opacity-100 shadow-custom',{
+                                    '!bg-black ' :  checkIfIncludes().includes(item.id)
+                                })}>
+                                <img src={ checkIfIncludes().includes(item.id) ? HeartWhite : Heart} alt="wishicon" width={20} height={20} /> 
                             </button> 
                         </div> 
                         <div className='mt-auto transition-all relative z-[999] opacity-0 group-hover:opacity-100 duration-300 shadow-custom'>

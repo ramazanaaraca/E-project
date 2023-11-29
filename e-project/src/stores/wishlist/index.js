@@ -13,7 +13,11 @@ const wishlist = createSlice({
             const existItem = state.favorites?.findIndex(item => item?.id === action.payload?.id)
             
             if(existItem >= 0) {
-              alert('all ready exist')  
+                const updatedWishlists = state.favorites?.filter((item) => item?.id !== action.payload?.id)
+
+                state.favorites = updatedWishlists;
+    
+                localStorage.setItem("favorites", JSON.stringify(state.favorites));  
             }
             else {
                 state.favorites?.push(action.payload)

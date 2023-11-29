@@ -4,7 +4,7 @@ import ExList from '~/assets/ex.svg'
 
 function Wish({wishlist}) {
 
-    const { img, name, price } = wishlist;
+    const {  img, name, price } = wishlist;
 
     return(
         <>
