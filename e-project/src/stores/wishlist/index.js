@@ -10,7 +10,7 @@ const wishlist = createSlice({
     reducers: {
         _addWishList:(state , action) =>  {
             //Var olup olmadığını kontrol eder
-            const existItem = state.favorites?.findIndex(item => item.id === action.payload?.id)
+            const existItem = state.favorites?.findIndex(item => item?.id === action.payload?.id)
             
             if(existItem >= 0) {
               alert('all ready exist')  

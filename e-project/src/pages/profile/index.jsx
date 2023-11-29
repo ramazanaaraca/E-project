@@ -6,10 +6,7 @@ import Camera from "~/assets/camera.svg"
 import { PROFILE_LIST } from "~/utils/consts/profilelink"
 import { NavLink } from "react-router-dom"
 import classNames from "classnames"
-import { exact } from "prop-types"
-import { useParams } from "react-router-dom"
-import { useLocation } from "react-router-dom"
-import { useEffect } from "react"
+
 
 function Profile() {
 

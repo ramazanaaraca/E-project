@@ -6,14 +6,20 @@ import { Link } from 'react-router-dom'
 import { PropTypes } from "prop-types"
 import { addWishList } from '~/stores/wishlist/actions'
 import { useWishlist } from '~/stores/wishlist/hooks'
-import { useEffect } from 'react'
+import { addToCard } from '../../stores/cart/actions'
+
 
 function Card({item}) {
 
-    const { favorites } = useWishlist()
+    
+    
 
     const add = (item) => {
         addWishList(item);
+    };
+
+    const addProduct = (item) => {
+        addToCard(item);
     };
     
     return(
@@ -30,6 +36,7 @@ function Card({item}) {
                         </div> 
                         <div className='mt-auto transition-all relative z-[999] opacity-0 group-hover:opacity-100 duration-300 shadow-custom'>
                             <Button
+                            onClick={() => addProduct(item)}
                             size='full'
                             >
                             Add to cart

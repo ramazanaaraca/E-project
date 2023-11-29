@@ -1,11 +1,10 @@
-import { Link } from "react-router-dom";
 import Button from "~/components/button";
 import { removeWishList } from "~/stores/wishlist/actions";
 import ExList from '~/assets/ex.svg'
 
 function Wish({wishlist}) {
 
-    const { id, img, name, price, category } = wishlist;
+    const { img, name, price } = wishlist;
 
     return(
         <>
