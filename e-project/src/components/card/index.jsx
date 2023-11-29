@@ -32,9 +32,8 @@ function Card({item}) {
                     <div className='absolute z-1 top-0 p-4 w-full flex flex-col h-full'>
                         <div className='flex items-center justify-between'>
                             <div className='px-4 h-6 lg:text-base text-sm bg-white rounded  font-bold flex items-center shadow-custom relative z-[9]'>{item.sub}</div>
-                            <button onClick={
-                                () => user ? add(item) : navigate('/login')
-                                } className='p-1.5 rounded-full relative z-[9999] bg-white transition-all opacity-0 duration-300  group-hover:opacity-100 shadow-custom'>
+                            <button onClick={() => user ? add(item) : navigate('/login') }
+                                className='p-1.5 rounded-full relative z-[9999] bg-white transition-all opacity-0 duration-300  group-hover:opacity-100 shadow-custom'>
                                 <img src={Heart} alt="wishicon" width={20} height={20} /> 
                             </button> 
                         </div> 
