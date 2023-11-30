@@ -71,7 +71,7 @@ const productcard = createSlice({
             if (existCartIndex >= 0) {
                 state.cartItems[existCartIndex].qty -= 1;
                 localStorage.setItem('cartItems', JSON.stringify(state.cartItems));
-            }
+            } 
         },
     }
 })

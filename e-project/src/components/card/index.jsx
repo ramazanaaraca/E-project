@@ -12,7 +12,7 @@ import classNames from 'classnames'
 
 
 
-function Card({item , wishlist }) {
+function Card({item}) {
 
     const {favorites} = useWishlist()
     

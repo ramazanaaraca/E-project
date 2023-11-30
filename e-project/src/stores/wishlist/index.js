@@ -20,7 +20,7 @@ const wishlist = createSlice({
                 localStorage.setItem("favorites", JSON.stringify(state.favorites));  
             }
             else {
-                state.favorites?.push(action.payload)
+                state.favorites?.push({...action.payload , qty: 1})
 
                 localStorage.setItem('favorites', JSON.stringify(state.favorites))
             }

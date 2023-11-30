@@ -68,7 +68,7 @@ function Profile() {
                                 </nav>
                             </aside>
                         </div>
-                        <div className="lg:col-span-2 lg:px-16 mt-10">
+                        <div className="lg:col-span-2 lg:px-16 max-lg:mt-10">
                             <div className="mb-10 text-xl font-medium">
                             Account Details 
                             </div>

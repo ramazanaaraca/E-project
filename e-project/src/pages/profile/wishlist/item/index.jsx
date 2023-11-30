@@ -3,13 +3,17 @@ import { removeWishList } from "~/stores/wishlist/actions";
 import ExList from '~/assets/ex.svg'
 import { useBreakpoint } from '~/hooks/use-breakpoint';
 import  PropTypes  from "prop-types";
+import { addToCard } from "../../../../stores/cart/actions";
 
-function Wish({wishlist}) {
+function Wish({wishlist , item}) {
 
-    const {  img, name, price } = wishlist;
+    const {   img, name, price } = wishlist;
 
     const { breakpoint } = useBreakpoint();
 
+    const addProduct = (item) => {
+        addToCard(item);
+    };
 
     return(
         <>
@@ -31,7 +35,9 @@ function Wish({wishlist}) {
                     <span className="text-sm">{price}</span>
                 </div>
                 <div className="">
-                    <Button size={breakpoint === 'desktop' ? 'small' : 'full' }  >Add To Cart</Button>
+                    <Button 
+                    onClick={() => addProduct(wishlist)}
+                    size={breakpoint === 'desktop' ? 'small' : 'full' }  >Add To Cart</Button>
                 </div>
             </div>
         </div>

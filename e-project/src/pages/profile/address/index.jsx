@@ -1,8 +1,11 @@
+import AdressItem from "./addressitem"
 
 function Address() {
     return(
         <>
-        Address
+            <div>
+                <AdressItem></AdressItem>
+            </div>
         </>  
     )
 
