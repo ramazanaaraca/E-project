@@ -11,7 +11,8 @@ const initialState = {
         }
       })(),
       
-    cartTotalAmount: 0
+    cartTotalAmount: 0,
+    cartSubAmount: 0
 }
 
 const productcard = createSlice({
@@ -57,6 +58,13 @@ const productcard = createSlice({
             state.cartTotalAmount = state.cartItems?.reduce((total, item) => total + (item?.price * item?.qty ), 0)
         },
 
+        _calcSubAmount: state => {
+            state.cartSubAmount = state.cartItems?.reduce((total, item) => {
+                const itemPrice = parseFloat(item?.price) || 0;
+                return total + itemPrice
+            }, 0)
+        },
+
         //Şuan İçin Çalışmıyor Hatanın nedenini anlayamadım
         _incrementQty: (state, action) => { 
             const existCartIndex = state.cartItems?.findIndex(item => item?.id === action.payload?.id);
@@ -77,5 +85,5 @@ const productcard = createSlice({
     }
 })
 
-export const {_addToCard , _decrementQty , _incrementQty , _removeToCard , _calcTotalAmount } = productcard.actions
+export const {_addToCard , _decrementQty , _incrementQty , _removeToCard , _calcTotalAmount , _calcSubAmount } = productcard.actions
 export default productcard.reducer

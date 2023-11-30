@@ -4,17 +4,17 @@ import Headband from '~/assets/headband.png'
 export const COLLECTION = [
     {
         name:'Headband',
-        path:'/',
+        path:'/shop',
         img: Headband
     },
     {
         name:'AirPod',
-        path:'/',
+        path:'/shop',
         img: airpod
     },
     {
         name:'AirPod',
-        path:'/',
+        path:'/shop',
         img: airpod
     }
 ]

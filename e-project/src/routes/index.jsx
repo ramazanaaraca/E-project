@@ -12,6 +12,10 @@ import Address from "~/pages/profile/address";
 import EditProfile from "~/pages/profile/edit-profile";
 import Orders from "~/pages/profile/orders";
 import Wishlist from "~/pages/profile/wishlist";
+import Order from "~/pages/order";
+import Shopping from "~/pages/order/shopping";
+import Detail from "~/pages/order/detail";
+import Complate from "~/pages/order/complate";
 
 
 const routes = createBrowserRouter([
@@ -56,7 +60,27 @@ const routes = createBrowserRouter([
                         element: <Wishlist />                    
                     },
                 ]
-            }
+            },
+            {   path : '/order',
+                element: <PrivateRoute> <Order /> </PrivateRoute> ,
+                children: [
+                    {
+                        index : true ,
+                        element : <Shopping />
+                    },
+                    {
+                        index : true ,
+                        path : 'detail',
+                        element : <Detail />
+                    },
+                    {
+                        index : true ,
+                        path : 'complate',
+                        element : <Complate />
+                    }
+        
+                ]
+            }   
         ],
             
     },
@@ -73,7 +97,8 @@ const routes = createBrowserRouter([
                 element: <Register />  
             },
         ]
-    }
+    },
+    
 ])
 
 export default routes

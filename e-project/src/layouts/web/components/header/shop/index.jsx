@@ -7,14 +7,18 @@ import { useEffect } from 'react'
 import { useCartItems } from '~/stores/cart/hooks'
 import { useCartTotalAmount } from '~/stores/cart/hooks'
 import classNames from 'classnames'
+import { useCartSubAmount } from '~/stores/cart/hooks'
+import { calcSubAmount } from '../../../../../stores/cart/actions'
 
 function Shop() {
 
   const  cartItems  = useCartItems()
   const  cartTotalAmount  = useCartTotalAmount()
+  const  cartSubAmount  = useCartSubAmount()
 
   useEffect(() => {
     calcTotalAmount()
+    calcSubAmount()
   }, [cartItems])
   
 
@@ -51,7 +55,7 @@ function Shop() {
                         <div className='w-full'>
                           <div className='flex items-center justify-between border-b py-3 text-base font-normal'>
                             <span>Subtotal</span>
-                            <div></div>
+                            <div>${Number(cartSubAmount)}</div>
                           </div>
                           <div className='flex items-center justify-between py-3 text-base font-medium'>
                             <span>Total</span>

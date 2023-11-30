@@ -16,12 +16,13 @@ function Header() {
 
     const isShopPage = location.pathname.startsWith('/shop');
     const isProfilePage = location.pathname.startsWith('/profile');
-
+    const isOrderPage = location.pathname.startsWith('/order');
+    
     return (
         <Wrapper
         classname={classNames('bg-orange py-[18px]' , 
         {   
-            '!bg-white': isShopPage || isProfilePage ,
+            '!bg-white': isShopPage || isProfilePage || isOrderPage ,
         }
         )}>
             <div className="flex items-center justify-between">
