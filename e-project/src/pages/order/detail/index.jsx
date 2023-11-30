@@ -8,7 +8,7 @@ import ShopCart from '~/layouts/web/components/header/shop/components/shopcart'
 import DetailItem from './detailitem'
 import { useDiscount } from '~/stores/cart/hooks'
 import { useCartSubAmount } from '~/stores/cart/hooks'
-import Button from '../components/Button'
+import Button from '../../../components/button'
 import { useNavigate } from 'react-router-dom'
 
 function Detail() {
