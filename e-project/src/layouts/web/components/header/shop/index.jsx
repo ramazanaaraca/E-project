@@ -1,26 +1,15 @@
 import Shopsvg from '~/assets/shop_bag.svg'
 import { Popover , Transition} from '@headlessui/react'
-import Button from '~/components/button'
 import ShopCart from './components/shopcart'
-import { calcTotalAmount } from '~/stores/cart/actions'
-import { useEffect } from 'react'
 import { useCartItems } from '~/stores/cart/hooks'
-import { useCartTotalAmount } from '~/stores/cart/hooks'
 import classNames from 'classnames'
-import { useCartSubAmount } from '~/stores/cart/hooks'
-import { calcSubAmount } from '../../../../../stores/cart/actions'
+import ShopPrice from './components/shopprice'
+
+
 
 function Shop() {
 
   const  cartItems  = useCartItems()
-  const  cartTotalAmount  = useCartTotalAmount()
-  const  cartSubAmount  = useCartSubAmount()
-
-  useEffect(() => {
-    calcTotalAmount()
-    calcSubAmount()
-  }, [cartItems])
-  
 
   return (
     <>
@@ -42,6 +31,7 @@ function Shop() {
             leaveFrom="transform  opacity-100"
             leaveTo="transform  opacity-0"
             >
+               {({ close }) => (
               <Popover.Panel className='h-[100vh] max-w-[413px]  text-black py-10 px-6 '>
                 <div className='flex flex-col h-full gap-4'>
                   <div className='text-xl font-medium'>Cart</div>
@@ -51,27 +41,15 @@ function Shop() {
                       }
                   </div>
                   <div className='mt-auto'>
-                      <div className='flex flex-col items-center gap-4'>
-                        <div className='w-full'>
-                          <div className='flex items-center justify-between border-b py-3 text-base font-normal'>
-                            <span>Subtotal</span>
-                            <div>${Number(cartSubAmount)}</div>
-                          </div>
-                          <div className='flex items-center justify-between py-3 text-base font-medium'>
-                            <span>Total</span>
-                            <div>${Number(cartTotalAmount)}</div>
-                          </div>
-                        </div>
-                        <Button
-                          size='full'
-                          >Checkout</Button>
-                        <div className='text-center'>
-                          View Cart
-                        </div>
-                      </div>
+                      <ShopPrice
+                      shop={true}
+                      path='/order'
+                      onclick={() => close()}
+                      />
                   </div>
                 </div>  
               </Popover.Panel>
+               )}
             </Transition>
     </Popover>
     </>

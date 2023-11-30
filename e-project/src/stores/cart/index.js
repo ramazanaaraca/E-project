@@ -12,7 +12,9 @@ const initialState = {
       })(),
       
     cartTotalAmount: 0,
-    cartSubAmount: 0
+    cartSubAmount: 0,
+    discountedTotalAmount: 0,
+    plan: 'free'
 }
 
 const productcard = createSlice({
@@ -23,26 +25,30 @@ const productcard = createSlice({
         
 
         _addToCard:(state , action) => {
-                //cart is exist
+            //cart is exist
 
-                const existCartIs = state.cartItems?.findIndex(item => item?.id === action.payload?.id)
+            const existCartIs = state.cartItems?.findIndex(item => item?.id === action.payload?.id)
 
-                if (existCartIs >= 0)   {
+            if (existCartIs >= 0)   {
 
-                    state.cartItems[existCartIs].qty += 1;
+                state.cartItems[existCartIs].qty += 1;
 
+            }
+            else  {
+
+                if(action.payload.qty > 1) {
+                    state.cartItems?.push({ ...action.payload , qty: action.payload.qty})
+                } else {
+                    state.cartItems?.push( { ...action.payload , qty: 1})
+
+                    localStorage.setItem("cartItems" , JSON.stringify(state.cartItems))
                 }
-                else  {
 
-                    if(action.payload.qty > 1) {
-                        state.cartItems?.push({ ...action.payload , qty: action.payload.qty})
-                    } else {
-                        state.cartItems?.push( { ...action.payload , qty: 1})
+            }
+        },
 
-                        localStorage.setItem("cartItems" , JSON.stringify(state.cartItems))
-                    }
-
-                }
+        _setPlan:(state , action) => {
+            state.plan = action.payload
         },
 
         _removeToCard: (state, action) => {
@@ -58,6 +64,19 @@ const productcard = createSlice({
             state.cartTotalAmount = state.cartItems?.reduce((total, item) => total + (item?.price * item?.qty ), 0)
         },
 
+        _calcDiscountedTotalAmount: (state) => {
+            const fifteenPercentMore = state.cartTotalAmount * 1.15;
+            const twentyPercentLess = state.cartTotalAmount * 0.79;
+      
+            if (state.plan === "express") {
+              state.discountedTotalAmount = Number(fifteenPercentMore);
+            } else if (state.plan === "pickup") {
+              state.discountedTotalAmount = Number(twentyPercentLess);
+            } else {
+              state.discountedTotalAmount = state.cartTotalAmount;
+            }
+        },
+
         _calcSubAmount: state => {
             state.cartSubAmount = state.cartItems?.reduce((total, item) => {
                 const itemPrice = parseFloat(item?.price) || 0;
@@ -65,7 +84,7 @@ const productcard = createSlice({
             }, 0)
         },
 
-        //Şuan İçin Çalışmıyor Hatanın nedenini anlayamadım
+        
         _incrementQty: (state, action) => { 
             const existCartIndex = state.cartItems?.findIndex(item => item?.id === action.payload?.id);
             if (existCartIndex >= 0) {
@@ -82,8 +101,10 @@ const productcard = createSlice({
                 localStorage.setItem('cartItems', JSON.stringify(state.cartItems));}
             } 
         },
+
+        
     }
 })
 
-export const {_addToCard , _decrementQty , _incrementQty , _removeToCard , _calcTotalAmount , _calcSubAmount } = productcard.actions
+export const {_addToCard , _decrementQty , _incrementQty , _removeToCard , _calcTotalAmount , _calcSubAmount , _setPlan , _calcDiscountedTotalAmount } = productcard.actions
 export default productcard.reducer

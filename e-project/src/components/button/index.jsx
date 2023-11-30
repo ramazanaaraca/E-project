@@ -13,6 +13,7 @@ export default function Button({ children , variant , size , as , ...props}) {
                 'px-10' : size === 'tight',
                 'px-5' : size === 'small',
                 'w-full' : size === 'full',
+                'flex items-center justify-center w-full' : size === 'flex',
             }
             ) 
         }, children)
@@ -22,7 +23,7 @@ export default function Button({ children , variant , size , as , ...props}) {
 Button.propTypes = {
     children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
     variant: PropTypes.oneOf(['primary' , 'secondary']),
-    size: PropTypes.oneOf(['normal','full','tight','small']),
+    size: PropTypes.oneOf(['normal','full','tight','small' ,'flex']),
     as: PropTypes.oneOfType([PropTypes.object, PropTypes.string ,PropTypes.element ]),
     props: PropTypes.object
 }
