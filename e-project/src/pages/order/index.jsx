@@ -1,4 +1,4 @@
-import Wrapper from "~/components/Wrapper"
+import Wrapper from "./components/Wrapper"
 import { Outlet, useLocation } from "react-router-dom"
 import Prograssive from "./components/prograssive"
 
