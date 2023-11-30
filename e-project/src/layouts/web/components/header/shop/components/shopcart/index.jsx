@@ -25,7 +25,7 @@ function ShopCart({productcard}) {
                 </div>
             </div>
             <div className='flex items-end flex-col gap-2'> 
-                <span>{price}</span>
+                <span>${price}</span>
                 <button onClick={() => removeTocard(productcard)}>
                     <img src={ExList} alt="" />
                 </button>

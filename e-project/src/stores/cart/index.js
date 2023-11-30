@@ -69,8 +69,9 @@ const productcard = createSlice({
         _decrementQty: (state, action) => {
             const existCartIndex = state.cartItems?.findIndex(item => item?.id === action.payload?.id);
             if (existCartIndex >= 0) {
-                state.cartItems[existCartIndex].qty -= 1;
-                localStorage.setItem('cartItems', JSON.stringify(state.cartItems));
+                if(state.cartItems[existCartIndex].qty > 0)
+                {state.cartItems[existCartIndex].qty -= 1;
+                localStorage.setItem('cartItems', JSON.stringify(state.cartItems));}
             } 
         },
     }

@@ -32,7 +32,7 @@ function Wish({wishlist , item}) {
                     </div>
                 </div>
                 <div>
-                    <span className="text-sm">{price}</span>
+                    <span className="text-sm">${price}</span>
                 </div>
                 <div className="">
                     <Button 

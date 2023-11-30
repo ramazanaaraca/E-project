@@ -69,7 +69,7 @@ function Card({item}) {
                         <img src={Star} alt="star" width={16} height={16} />
                     </div>
                     <p className='lg:text-base text-sm font-semibold leading-6'>{item.name}</p>
-                    <div className='text-sm font-semibold'>{item.price}</div>
+                    <div className='text-sm font-semibold'>${item.price}</div>
                 </div>
             </div>
         </>
