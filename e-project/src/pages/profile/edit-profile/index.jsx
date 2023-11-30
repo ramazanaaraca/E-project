@@ -1,6 +1,7 @@
 import { Form, Formik } from 'formik'
 import Input from '~/components/input'
 import Button from '~/components/button'
+
 function EditProfile() {
     return(
         <div>

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 function Input({name , err , label , variant , border , children, ...props}) {
     return(
     <>
-    <label htmlFor={name}>
+    <label htmlFor={name} {...props}>
        {border === 'full' && <div className="text-[#6C7275] text-xs font-bold mb-3" >{label}*</div>}
         <Field
         id={name}

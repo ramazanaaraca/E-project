@@ -14,7 +14,7 @@ function Prograssive({name , number , isActive , isSucces }) {
                 <div className="flex items-center gap-4">
                     <div className={classNames("w-10 h-10 flex items-center justify-center rounded-full bg-[#B1B5C3] text-white  text-base" , {
                         '!bg-[#23262F] !text-white' : isActive,
-                        'bg-[#38CB89]' : isSucces
+                        '!bg-[#38CB89]' : isSucces
                     })}>{isSucces ? <FaCheck /> : number}</div>
                     <p className={classNames("text-base font-medium text-[#B1B5C3]" , {
                         'text-[#23262F]' : isActive,

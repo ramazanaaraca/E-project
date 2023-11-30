@@ -1,6 +1,5 @@
 import { useCartItems } from '~/stores/cart/hooks'
 import ShopCart from '~/layouts/web/components/header/shop/components/shopcart'
-import { useState } from 'react'
 import { RadioGroup } from '@headlessui/react'
 import classNames from 'classnames'
 import ShopPrice from '~/layouts/web/components/header/shop/components/shopprice'

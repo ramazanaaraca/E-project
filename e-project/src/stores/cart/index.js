@@ -11,10 +11,10 @@ const initialState = {
         }
       })(),
       
-    cartTotalAmount: 0,
-    cartSubAmount: 0,
-    discountedTotalAmount: 0,
-    plan: 'free'
+    cartTotalAmount: localStorage.getItem('cartTotalAmount') ? JSON.parse(localStorage.getItem('cartTotalAmount')) : 0,
+    cartSubAmount: localStorage.getItem('cartSubAmount') ? JSON.parse(localStorage.getItem('cartSubAmount')) : 0,
+    discountedTotalAmount: localStorage.getItem('discountedTotalAmount') ? JSON.parse(localStorage.getItem('discountedTotalAmount')) : 0,
+    plan: localStorage.getItem('plan') ? JSON.parse(localStorage.getItem('plan')) : 'free'   
 }
 
 const productcard = createSlice({
@@ -49,6 +49,8 @@ const productcard = createSlice({
 
         _setPlan:(state , action) => {
             state.plan = action.payload
+            
+            localStorage.setItem('plan', JSON.stringify(state.plan)); 
         },
 
         _removeToCard: (state, action) => {
@@ -62,6 +64,8 @@ const productcard = createSlice({
 
         _calcTotalAmount: state => {
             state.cartTotalAmount = state.cartItems?.reduce((total, item) => total + (item?.price * item?.qty ), 0)
+
+            localStorage.setItem('cartTotalAmount', JSON.stringify(state.cartTotalAmount));
         },
 
         _calcDiscountedTotalAmount: (state) => {
@@ -75,6 +79,9 @@ const productcard = createSlice({
             } else {
               state.discountedTotalAmount = state.cartTotalAmount;
             }
+            
+            localStorage.setItem('discountedTotalAmount', JSON.stringify(state.discountedTotalAmount));    
+
         },
 
         _calcSubAmount: state => {
@@ -82,6 +89,9 @@ const productcard = createSlice({
                 const itemPrice = parseFloat(item?.price) || 0;
                 return total + itemPrice
             }, 0)
+
+            localStorage.setItem('cartSubAmount', JSON.stringify(state.cartSubAmount));  
+
         },
 
         
@@ -96,7 +106,7 @@ const productcard = createSlice({
         _decrementQty: (state, action) => {
             const existCartIndex = state.cartItems?.findIndex(item => item?.id === action.payload?.id);
             if (existCartIndex >= 0) {
-                if(state.cartItems[existCartIndex].qty > 0)
+                if(state.cartItems[existCartIndex].qty > 1)
                 {state.cartItems[existCartIndex].qty -= 1;
                 localStorage.setItem('cartItems', JSON.stringify(state.cartItems));}
             } 
