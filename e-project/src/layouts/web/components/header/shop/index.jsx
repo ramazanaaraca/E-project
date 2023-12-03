@@ -35,7 +35,7 @@ function Shop() {
               <Popover.Panel className='h-[100vh] max-w-[413px]  text-black py-10 px-6 '>
                 <div className='flex flex-col h-full gap-4'>
                   <div className='text-xl font-medium'>Cart</div>
-                  <div className='flex flex-col gap-4 overflow-auto shop_scroll pe-2'>
+                  <div className='flex flex-col overflow-auto shop_scroll pe-2'>
                       {
                          cartItems?.map(productcard => <ShopCart key={productcard?.id} productcard={productcard} />) 
                       }

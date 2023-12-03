@@ -17,12 +17,29 @@ import Order from "~/pages/order";
 import Shopping from "~/pages/order/shopping";
 import Detail from "~/pages/order/detail";
 import Complate from "~/pages/order/complate";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
+
+const  ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
 
 const routes = createBrowserRouter([
     {
         path:'/',
-        element:<WebLayout/>,
+        element:(
+            <>
+            <WebLayout/>
+            <ScrollToTop/>
+            </>
+        ),
         children: [
             {
                 index: true,

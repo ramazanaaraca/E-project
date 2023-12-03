@@ -11,6 +11,7 @@ export default function EmptyRoute({children}) {
 
             useEffect(() => {
                 if (cartItems.length === 0) {
+                    alert('your shopping empty')
                     redirect('/', {
                         replace: true
                     })

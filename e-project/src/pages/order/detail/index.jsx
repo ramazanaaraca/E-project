@@ -36,8 +36,8 @@ function Detail() {
 
     return (
         <>
-        <div className="lg:grid lg:grid-cols-3 lg:gap-16" >
-            <div className="lg:col-span-2">
+        <div className="lg:grid lg:grid-cols-3 lg:gap-16 flex flex-col gap-4" >
+            <div className="lg:col-span-2 max-lg:order-2">
             <Formik
             initialValues={{
             firstname:'',
@@ -76,21 +76,23 @@ function Detail() {
                 </Form>
             </Formik>
             </div>
-            <div className="lg:col-span-1">
+            <div className="lg:col-span-1 max-lg:order-1">
                 <div className='py-4 px-6 border-[#CBCBCB] border rounded-md'>
-                    <h6 className='text-base font-medium'>Order summary</h6>
+                    <h6 className='text-base font-medium mb-4 '>Order summary</h6>
                     
                     {
-                        cartItems?.map(productcard => <div className='pt-4'key={productcard?.id}> <ShopCart productcard={productcard} /> </div>) 
+                        cartItems?.map(productcard => <ShopCart key={productcard?.id} productcard={productcard} />) 
                     }
                     
                     <DetailItem 
                     plan={plan}
                     name='Shipping'
+                    corner='bottom'
                     />
                     <DetailItem 
                     plan={SubAmount}
                     name='Subtotal'
+                    corner='bottom'
                     />
                     <DetailItem 
                     plan={DisAmount}

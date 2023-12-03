@@ -17,30 +17,25 @@ function Wish({wishlist , item}) {
 
     return(
         <>
-        <div className="flex items-center gap-2 border-b pb-2">
-            <div>
-                <button onClick={() => removeWishList(wishlist)}>
-                    <img src={ExList} alt="ex" width={24} height={24} />
-                </button>
+        
+        <td className="flex lg:flex-row flex-col items-start lg:items-center gap-2 py-3">
+            <button onClick={() => removeWishList(wishlist)}>
+            <img src={ExList} alt="ex" width={24} height={24} />
+            </button>
+            <img src={img} alt="" width={60} height={72} />
+            <div className="flex flex-col gap-2">
+                <div className="max-w-[200px] text-xs">{name}</div>
+                <div className="text-xs">Color: Black</div>
             </div>
-            <div className="flex lg:flex-row flex-col lg:items-center justify-between flex-1">
-                <div className="flex items-center gap-3">
-                    <img src={img} alt="" width={60} height={72} />
-                    <div className="flex flex-col gap-2">
-                        <div className="max-w-[200px] text-xs">{name}</div>
-                        <div className="text-xs">Color: Black</div>
-                    </div>
-                </div>
-                <div>
-                    <span className="text-sm">${price}</span>
-                </div>
-                <div className="">
-                    <Button 
-                    onClick={() => addProduct(wishlist)}
-                    size={breakpoint === 'desktop' ? 'small' : 'full' }  >Add To Cart</Button>
-                </div>
-            </div>
-        </div>
+        </td>
+        <td className="py-3">
+            <span className="text-sm">${price}</span>
+        </td>
+        <td className="py-3">
+            <Button 
+            onClick={() => addProduct(wishlist)}
+            size={breakpoint === 'desktop' ? 'small' : 'full' }  >Add To Cart</Button>
+        </td>
         </>
     )
 }

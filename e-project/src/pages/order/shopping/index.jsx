@@ -14,7 +14,7 @@ function Shopping() {
 
     return (
         <>
-        <div className="lg:grid lg:grid-cols-3 lg:gap-16">
+        <div className="lg:grid lg:grid-cols-3 lg:gap-16 flex flex-col gap-3">
             <div className="lg:col-span-2">
             {
                 cartItems?.map(productcard => <ShopCart key={productcard?.id} productcard={productcard} />) 

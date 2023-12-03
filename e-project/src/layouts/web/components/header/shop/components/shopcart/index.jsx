@@ -15,9 +15,8 @@ function ShopCart({productcard}) {
 
    
     return(
-        <div className="flex items-center justify-between border-b pb-4">
+        <div className="flex items-center justify-between border-b pb-4 mb-4">
             <div>
-               
                 <div className='flex flex-col lg:flex-row  gap-2 lg:items-center items-start'>
                     <img src={img} alt="" width={80} height={96}/>
                     <div className='flex flex-col items-start gap-2'>

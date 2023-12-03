@@ -14,7 +14,7 @@ function Order() {
         <>
         <Wrapper>
             <h6 className=" text-5xl font-medium text-center py-10">Cart</h6>
-                <div className="flex items-center gap-8">
+                <div className="flex items-center gap-8 ">
                     <Prograssive
                     isActive={isOrderPage && true}
                     isSucces={(isDetailPage || isComplatePage) && true}

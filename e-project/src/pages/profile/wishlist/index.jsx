@@ -8,18 +8,22 @@ function Wishlist() {
     return(
         <>
             
-            <ul className="flex items-center justify-between border-b pb-2 ">
-                <li className="">Product</li>
-                <li className="">Price</li>
-                <li className="">Action</li>
-            </ul>
-            <div className="flex flex-col gap-3 py-6">
+            <table className="w-full text-left">
+            <thead className="text-[#6C7275] lg:text-sm text-xs border-b border-[#E8ECEF]">
+                <tr>
+                    <th className="py-3">Product</th>
+                    <th className="py-3">Price</th>
+                    <th className="py-3">Action</th>
+                </tr>
+            </thead>
+            <tbody className="w-full">
             {
                 user && favorites?.map((wishlist) => {
-                    return <Wish key={wishlist?.id} wishlist={wishlist} />
+                    return <tr className="text-[#6C7275] lg:text-sm text-xs border-b border-[#E8ECEF]"><Wish key={wishlist?.id} wishlist={wishlist} /></tr>
                 })
             }
-            </div>
+            </tbody>
+            </table>
         </>
     )
 }

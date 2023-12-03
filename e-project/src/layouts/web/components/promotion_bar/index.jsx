@@ -15,7 +15,7 @@ function PromotionBar() {
                     <img src={Ticket} alt="ticket" width={24} height={24} />
                     <p className='font-semibold lg:text-sm text-xs'>30% off storewide — Limited time!</p>
                     <Link
-                    to='/' 
+                    to='/shop' 
                     className='hover:text-[#f5cc7a] hover:border-[#f5cc7a] transition-all font-medium lg:text-sm text-xs flex items-center gap-x-1 text-[#FFAB00] border-b border-[#FFAB00] pb-0.5'>
                     Shop Now 
                     <img src={Arrow} alt="arrow" width={18} height={18}/>
