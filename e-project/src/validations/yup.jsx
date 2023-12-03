@@ -2,16 +2,16 @@ import * as Yup from "yup";
 
 Yup.setLocale({
   mixed: {
-    required: 'Bu alanı doldurmanız gerekiyor.'
+    required: 'You need to fill in this field.'
   },
   string: {
-    email: 'Geçerli bir e-posta adresi girin.',
-    min: 'Bu alan minimum ${min} karakter olmalıdır.',
-    max: 'Bu alan maksimum ${max} karakter olmalıdır.',
-    url: 'Geçerli bir URL girmelisiniz.'
+    email: 'Enter a valid email address.',
+    min: 'This field must be a minimum of ${min} characters.',
+    max: 'This field must have a maximum of ${max} characters.',
+    url: 'You must enter a valid URL.'
   },
   boolean: {
-    oneOf: 'Bu alanı işaretlemeniz gerekiyor.'
+    oneOf: 'You need to mark this field.'
   }
 })
 

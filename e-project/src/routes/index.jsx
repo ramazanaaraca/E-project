@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import PrivateRoute from "~/layouts/private";
+import EmptyRoute from "~/layouts/empty";
 import WebLayout from "~/layouts/web";
 import Home from "~/pages/Home";
 import Shop from "~/pages/Shop";
@@ -62,7 +63,7 @@ const routes = createBrowserRouter([
                 ]
             },
             {   path : '/order',
-                element: <PrivateRoute> <Order /> </PrivateRoute> ,
+                element: <PrivateRoute> <EmptyRoute> <Order /> </EmptyRoute> </PrivateRoute> ,
                 children: [
                     {
                         index : true ,

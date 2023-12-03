@@ -1,6 +1,7 @@
 import { Form, Formik } from 'formik'
 import Input from '~/components/input'
 import Button from '~/components/button'
+import { ProfileSchema } from '~/validations'
 
 function EditProfile() {
     return(
@@ -15,7 +16,7 @@ function EditProfile() {
             newpassword:'',
             repeatnewpassword:''
             }}
-
+            validationSchema={ProfileSchema}
             onSubmit={(values) => {
                 console.log(values)
             }}

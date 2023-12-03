@@ -11,7 +11,7 @@ function Orders() {
     return(
         <>
         <table className="w-full text-left">
-        <thead className="text-[#6C7275] text-sm border-b border-[#E8ECEF]" >
+        <thead className="text-[#6C7275] lg:text-sm text-xs border-b border-[#E8ECEF]" >
             <tr className="">
                 <th className="!font-medium py-3">Number ID</th>
                 <th className="!font-medium py-3">Dates</th>
@@ -22,7 +22,7 @@ function Orders() {
         <tbody className=" w-full">
             {
                 orderhistory.map((item , index ) => (
-                    <tr key={index} className="text-sm text-[#141718] border-b border-[#E8ECEF]"> 
+                    <tr key={index} className="lg:text-sm text-xs text-[#141718] border-b border-[#E8ECEF]"> 
                         <td className="py-6">#{item.orderident}</td>
                         <td>{item.orderdate}</td>
                         <td>{item.orderstatus}</td>

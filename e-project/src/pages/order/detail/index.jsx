@@ -14,8 +14,9 @@ import { orderDate } from '~/stores/order/actions'
 import { useOrderStatus } from '~/stores/order/hooks'
 import { addOrderHistory } from '~/stores/order/actions'
 import { useOrderDate } from '~/stores/order/hooks'
-import { orderID } from '../../../stores/order/actions'
-import { useOrderID } from '../../../stores/order/hooks'
+import { orderID } from '~/stores/order/actions'
+import { useOrderID } from '~/stores/order/hooks'
+import { OrderSchema } from '~/validations/order'
 
 
 
@@ -52,6 +53,7 @@ function Detail() {
             cardnumber:'',
             cvc:'',
             }}
+            validationSchema={OrderSchema}
             onSubmit={async (values) => {
                 try {
                     addOrderHistory([{discountedTotalAmount, cartSubAmount , orderdate, orderstatus , orderident  }]);

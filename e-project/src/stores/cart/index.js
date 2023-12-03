@@ -80,11 +80,11 @@ const productcard = createSlice({
             const twentyPercentLess = state.cartTotalAmount * 0.79;
       
             if (state.plan === "express") {
-              state.discountedTotalAmount = Number(fifteenPercentMore);
+              state.discountedTotalAmount = Number(fifteenPercentMore.toFixed(2));
             } else if (state.plan === "pickup") {
-              state.discountedTotalAmount = Number(twentyPercentLess);
+              state.discountedTotalAmount = Number(twentyPercentLess.toFixed(2));
             } else {
-              state.discountedTotalAmount = state.cartTotalAmount;
+              state.discountedTotalAmount = state.cartTotalAmount.toFixed(2);
             }
             
             localStorage.setItem('discountedTotalAmount', JSON.stringify(state.discountedTotalAmount));    
