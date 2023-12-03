@@ -14,7 +14,8 @@ const initialState = {
     cartTotalAmount: localStorage.getItem('cartTotalAmount') ? JSON.parse(localStorage.getItem('cartTotalAmount')) : 0,
     cartSubAmount: localStorage.getItem('cartSubAmount') ? JSON.parse(localStorage.getItem('cartSubAmount')) : 0,
     discountedTotalAmount: localStorage.getItem('discountedTotalAmount') ? JSON.parse(localStorage.getItem('discountedTotalAmount')) : 0,
-    plan: localStorage.getItem('plan') ? JSON.parse(localStorage.getItem('plan')) : 'free'   
+    plan: localStorage.getItem('plan') ? JSON.parse(localStorage.getItem('plan')) : 'free',
+    method: localStorage.getItem('method') ? JSON.parse(localStorage.getItem('method')) : 'credit'    
 }
 
 const productcard = createSlice({
@@ -51,6 +52,12 @@ const productcard = createSlice({
             state.plan = action.payload
             
             localStorage.setItem('plan', JSON.stringify(state.plan)); 
+        },
+
+        _setMethod:(state , action) => {
+            state.method = action.payload
+
+            localStorage.setItem('method', JSON.stringify(state.method))
         },
 
         _removeToCard: (state, action) => {
@@ -112,9 +119,15 @@ const productcard = createSlice({
             } 
         },
 
+        _clearAll: state  => {
+            state.cartItems = []
+
+            localStorage.setItem('cartItems', JSON.stringify(state.cartItems));
+        }
+
         
     }
 })
 
-export const {_addToCard , _decrementQty , _incrementQty , _removeToCard , _calcTotalAmount , _calcSubAmount , _setPlan , _calcDiscountedTotalAmount } = productcard.actions
+export const {_addToCard , _decrementQty , _incrementQty , _removeToCard , _calcTotalAmount , _calcSubAmount , _setPlan , _calcDiscountedTotalAmount , _setMethod , _clearAll } = productcard.actions
 export default productcard.reducer

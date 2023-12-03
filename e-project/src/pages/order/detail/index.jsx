@@ -8,17 +8,27 @@ import ShopCart from '~/layouts/web/components/header/shop/components/shopcart'
 import DetailItem from './detailitem'
 import { useDiscount } from '~/stores/cart/hooks'
 import { useCartSubAmount } from '~/stores/cart/hooks'
-import Button from '../../../components/button'
+import Button from '~/components/button'
 import { useNavigate } from 'react-router-dom'
+import { orderDate } from '~/stores/order/actions'
+import { useOrderStatus } from '~/stores/order/hooks'
+import { addOrderHistory } from '~/stores/order/actions'
+import { useOrderDate } from '~/stores/order/hooks'
+import { orderID } from '../../../stores/order/actions'
+import { useOrderID } from '../../../stores/order/hooks'
+
+
 
 function Detail() {
     const navigate = useNavigate();
-    const  cartItems  = useCartItems();
+    
+    const cartItems  = useCartItems();
     const discountedTotalAmount = useDiscount();
+    const orderident = useOrderID()
     const cartSubAmount = useCartSubAmount();
     const plan = usePlan();
-
-
+    const orderdate = useOrderDate();
+    const orderstatus = useOrderStatus()
 
     const SubAmount = `$${cartSubAmount}`;
     const DisAmount = `$${discountedTotalAmount}`;
@@ -42,10 +52,13 @@ function Detail() {
             cardnumber:'',
             cvc:'',
             }}
-
-            onSubmit={(values) => {
-                console.log(values)
-                navigate('/order/complate')
+            onSubmit={async (values) => {
+                try {
+                    addOrderHistory([{discountedTotalAmount, cartSubAmount , orderdate, orderstatus , orderident  }]);
+                    navigate('/order/complate');
+                } catch (error) {
+                    console.error('An error occurred:', error);
+                }
             }}
             >
                 <Form className='flex flex-start flex-col gap-6'>
@@ -53,6 +66,9 @@ function Detail() {
                     <ShippingAddress />
                     <Pay />
                     <Button
+                    onClick = {
+                        () => {orderID() ,orderDate()}
+                    }
                     type='submit'
                     >Place Order</Button>
                 </Form>

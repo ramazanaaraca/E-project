@@ -2,7 +2,7 @@ import classNames from "classnames"
 import { createElement } from "react"
 import  PropTypes  from "prop-types";
 
-export default function Button({ children , variant , size , as , ...props}) {
+export default function Button({ children , corner , variant , size , as , ...props}) {
         return createElement(as , {
             ...props,
             className:classNames('inline-block py-3 font-medium text-sm  text-white rounded-lg transition-all' ,
@@ -14,6 +14,7 @@ export default function Button({ children , variant , size , as , ...props}) {
                 'px-5' : size === 'small',
                 'w-full' : size === 'full',
                 'flex items-center justify-center w-full' : size === 'flex',
+                '!rounded-full' : corner === 'full'
             }
             ) 
         }, children)
@@ -25,14 +26,15 @@ Button.propTypes = {
     variant: PropTypes.oneOf(['primary' , 'secondary']),
     size: PropTypes.oneOf(['normal','full','tight','small' ,'flex']),
     as: PropTypes.oneOfType([PropTypes.object, PropTypes.string ,PropTypes.element ]),
-    props: PropTypes.object
+    props: PropTypes.object,
+    corner: PropTypes.oneOf(['full']),
 }
 
 
 Button.defaultProps = {
     as: 'button',
     variant: 'primary',
-    size: 'normal'
+    size: 'normal',
 }
 
 

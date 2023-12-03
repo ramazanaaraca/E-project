@@ -1,17 +1,19 @@
 import Input from '~/components/input'
-import { useState } from 'react'
 import { RadioGroup } from '@headlessui/react'
 import classNames from 'classnames'
 import { BsCreditCardFill } from "react-icons/bs";
+import { useMethod } from '~/stores/cart/hooks';
+import { setMethod } from '~/stores/cart/actions';
 
 
 function Pay() {
 
-    let [plan, setPlan] = useState('credit')
+    const method = useMethod()
+
     
     return(
         <div className='flex flex-start flex-col gap-6 py-10 px-6 border-[#CBCBCB] border rounded-md'>
-            <RadioGroup value={plan} onChange={setPlan} className='pb-8 border-b border-[#6C7275]'>
+            <RadioGroup value={method} onChange={setMethod} className='pb-8 border-b border-[#6C7275]'>
                 <RadioGroup.Label>Plan</RadioGroup.Label>
                     <RadioGroup.Option value="credit">
                             {({ checked }) => (
@@ -28,7 +30,7 @@ function Pay() {
                             </div>
                             )}
                     </RadioGroup.Option>
-                    <RadioGroup.Option value="paypal">
+                    <RadioGroup.Option value="Paypal">
                             {({ checked }) => (
                             <div className={classNames('flex items-center justify-between py-3 px-4  border rounded-md  text-base font-normal', {
                                 'bg-[#F3F5F7] border-[#141718]' : checked

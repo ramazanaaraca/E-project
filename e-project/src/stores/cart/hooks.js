@@ -5,4 +5,5 @@ export const useCartTotalAmount = () => useSelector(state => state.productcard?.
 export const useCartSubAmount = () => useSelector(state => state.productcard?.cartSubAmount)
 export const usePlan = () => useSelector(state => state.productcard?.plan)
 export const useDiscount = () => useSelector(state => state.productcard?.discountedTotalAmount)
+export const useMethod = () => useSelector(state => state.productcard?.method)
 
