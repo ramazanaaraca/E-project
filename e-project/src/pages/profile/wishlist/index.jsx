@@ -11,9 +11,9 @@ function Wishlist() {
             <table className="w-full text-left">
             <thead className="text-[#6C7275] lg:text-sm text-xs border-b border-[#E8ECEF]">
                 <tr>
-                    <th className="py-3">Product</th>
-                    <th className="py-3">Price</th>
-                    <th className="py-3">Action</th>
+                    <th className="py-3 font-medium">Product</th>
+                    <th className="py-3 font-medium">Price</th>
+                    <th className="py-3 font-medium">Action</th>
                 </tr>
             </thead>
             <tbody className="w-full">

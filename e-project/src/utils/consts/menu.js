@@ -7,24 +7,8 @@ export const SHOP_LINK = [
 
   export const PRODUCT_LINK = [
     {
-      path: '/shop',
-      title: 'Anasayfa'
+      path: '/shop/wireless-mouse',
+      title: 'Wireless Mouse'
     },
-    {
-      path: '/kesfet',
-      title: 'Keşfet'
-    },
-    {
-      path: '/makaleler',
-      title: 'Makaleler'
-    },
-    {
-      path: '/soru-cevap',
-      title: 'Soru & Cevap'
-    },
-    {
-      path: '/ders-istekleri',
-      title: 'Ders İstekleri',
-      new: true
-    }
+   
   ]

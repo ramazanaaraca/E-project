@@ -27,7 +27,7 @@ const order = createSlice({
             
             const sixDigitId = uuidv4().slice(0, 6);
             state.orderident =   sixDigitId
-
+            
         },
 
         _addOrderHistory: (state, action) => {

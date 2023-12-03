@@ -35,20 +35,11 @@ function Header() {
                             </Link>
                         </li>
                         <li className="relative">
-                            <Dropdown 
-                            name='Shop'
-                            >
-                            {
-                                SHOP_LINK.map((shop , index) => (
-                                    <Link
-                                    key={index}
-                                    to={shop.path}
-                                    className="hover:bg-[#FFAB00] transition-colors w-full block rounded py-1 px-1"
-                                    >{shop.title}
-                                    </Link>
-                                ))
-                            }
-                            </Dropdown>
+                            <Link
+                            to='/shop'
+                            className="rounded py-1 px-1"
+                            >Shop
+                            </Link>
                         </li>
                         <li className="relative">
                             <Dropdown 
@@ -58,7 +49,7 @@ function Header() {
                                 PRODUCT_LINK.map((shop , index) => (
                                     <Link
                                     key={index}
-                                    to={shop.to}
+                                    to={shop.path}
                                     className="hover:bg-[#FFAB00] transition-colors w-full block rounded py-1 px-1"
                                     >{shop.title}
                                     </Link>

@@ -19,6 +19,8 @@ import Detail from "~/pages/order/detail";
 import Complate from "~/pages/order/complate";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import Product from "../pages/Shop/product";
+import Layout from "../layouts";
 
 
 const  ScrollToTop = () => {
@@ -47,7 +49,17 @@ const routes = createBrowserRouter([
             },
             {
                 path:'/shop',
-                element:<Shop/>,
+                element:<Layout/>,
+                children: [
+                    {
+                        index:true,
+                        element:<Shop />
+                    }, 
+                    {
+                        path: ':slug',
+                        element : <Product />
+                    }
+                ]
             },
             {
                 path:'/contact',

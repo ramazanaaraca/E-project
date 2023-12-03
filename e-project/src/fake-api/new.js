@@ -5,6 +5,7 @@ import Product3 from '~/assets/product-3.png'
 export const NEW = [
     {
         id:1,
+        slug:'wireless-headphones',
         img: Product,
         sub: 'NEW',
         name: 'Wireless headphones',
@@ -13,13 +14,15 @@ export const NEW = [
     },
     {   id:2,
         img: Product2,
+        slug:'wireless-mouse',
         sub: 'NEW',
         name: 'Wireless headphones',
         price: '199',
         category:'Headphone'
     },
     {   id:3,
-        img: Product3   ,
+        img: Product3,
+        slug:'wireless-keyboard',
         sub: 'NEW',
         name: 'Wireless headphones',
         price: '29',
@@ -27,12 +30,14 @@ export const NEW = [
     },
     {   id:4,
         img: Product,
+        slug:'headpones-apple',
         sub: 'NEW',
         name: 'Wireless headphones',
         price: '499',
         category:'Wireless headphone'
     },
     {   id:5,
+        slug:'headpones-huawei',
         img: Product,
         sub: 'NEW',
         name: 'Wireless headphones',
@@ -40,6 +45,7 @@ export const NEW = [
         category:'Microphone'
     },
     {   id:6,
+        slug:'headpones-samsung',
         img: Product,
         sub: 'NEW',
         name: 'Wireless headphones',
@@ -47,6 +53,7 @@ export const NEW = [
         category:'Microphone'
     },
     {   id:7,
+        slug:'headpones-xiaomi',
         img: Product,
         sub: 'NEW',
         name: 'Wireless headphones',
@@ -55,6 +62,7 @@ export const NEW = [
     },
     {   id:8,
         img: Product,
+        slug:'headpones-corsair',
         sub: 'NEW',
         name: 'Wireless headphones',
         price: '229',

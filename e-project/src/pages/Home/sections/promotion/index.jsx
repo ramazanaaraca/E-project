@@ -2,6 +2,7 @@ import Wrapper from "~/components/wrapper"
 import Promotionimg from '~/assets/promotion.png'
 import Count from "./counts"
 import Button from "~/components/button";
+import { Link } from "react-router-dom";
 
 function Promotion() {
     return(
@@ -20,6 +21,8 @@ function Promotion() {
                 </div>
                 <div>
                     <Button
+                    as={Link}
+                    to='/shop'
                     variant='primary'
                     size='tight'
                     >

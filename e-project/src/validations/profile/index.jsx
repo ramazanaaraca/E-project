@@ -7,6 +7,5 @@ export const ProfileSchema = Yup.object().shape({
   displayname: Yup.string().required(),
   oldpassword: Yup.string(),
   newpassword: Yup.string(),
-  oldpassword: Yup.string(),
   repeatnewpassword: Yup.string()
 })
