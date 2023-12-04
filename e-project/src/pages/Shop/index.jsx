@@ -16,68 +16,81 @@ function Shop() {
 
    
     const [productList, setProductList] = useState([]);
-    const [prices, setPrices] = useState([]);
     const [categories, setCategories] = useState([]);
+    const [price, setPrice] = useState([]);
     const [selectedCategories, setSelectedCategories] = useState([]);
+    const [selectedPrices, setSelectedPrices] = useState([]);
     const [filteredProductList, setFilteredProductList] = useState([]);
-    // const [selectedPriceRange , setselectedPriceRange] = useState([])
 
     const addCategory = (category) => {
-        if(!selectedCategories.includes(category)){
-            setSelectedCategories(prev => ([...prev, category]))
-        }     
+        if (!selectedCategories.includes(category)) {
+            setSelectedCategories(prev => ([...prev, category]));
+        }
     }
 
     const removeCategory = (category) => {
-        if(selectedCategories.includes(category)){
-            //console.log(selectedCategories)
+        if (selectedCategories.includes(category)) {
             const removedList = selectedCategories.filter((item) => (item !== category));
             setSelectedCategories(removedList);
         }
     }
-    
+
+    const addPrice = (price) => {
+        if (!selectedPrices.includes(price)) {
+            setSelectedPrices(prev => ([...prev, price]));
+        }
+    }
+
+    const removePrice = (price) => {
+        if (selectedPrices.includes(price)) {
+            const removedList = selectedPrices.filter((item) => (item !== price));
+            setSelectedPrices(removedList);
+        }
+    }
 
     const getCategory = () => {
-        setCategories(CATEGORIES)
+        setCategories(CATEGORIES);
     }
 
     const getPrice = () => {
-        setPrices(PRICE)
+        setPrice(PRICE);
     }
 
     const getProducts = () => {
-        
         setProductList(BEST);
-       // setselectedPriceRange([...BEST])
         setFilteredProductList([...BEST]);
     }
 
     useEffect(() => {
+        getPrice();
         getProducts();
         getCategory();
-        getPrice();
-    }, [])
-  
+    }, []);
 
     useEffect(() => {
-        if(selectedCategories.length === 0){
-            setFilteredProductList(productList);
-        } else {
-            setFilteredProductList(productList.filter((item)=>(selectedCategories.includes(item.category))));
-            // setselectedPriceRange(productList.filter((item)=>(selectedCategories.includes(item.price))));
-        } 
-       
-    }, [selectedCategories, productList])
+        let filteredList = [...productList];
 
+        if (selectedCategories.length > 0) {
+            filteredList = filteredList.filter((item) => selectedCategories.includes(item.category));
+        }
+
+        if (selectedPrices.length > 0) {
+            filteredList = filteredList.filter((item) => selectedPrices.includes(item.price));
+        }
+
+        setFilteredProductList(filteredList);
+    }, [selectedCategories, selectedPrices, productList]);
+
+    
+    
+    // Diğer kısımlar aynı kaldı.
     const combineTitleSelected = selectedCategories.map((item, index) => {
-        const separator = index < selectedCategories.length - 1 ? ' , ' : ''; 
-      
+        const separator = index < selectedCategories.length - 1 ? ' , ' : '';
         return `${item}${separator}`;
-      });
-      
-      const formattedSelectedCategories = combineTitleSelected.join('');
-      //console.log(formattedSelectedCategories);
-      
+    });
+
+    const formattedSelectedCategories = combineTitleSelected.join('');
+    //console.log(formattedSelectedCategories);
 
     return (
         <>
@@ -121,18 +134,19 @@ function Shop() {
                            <div>
                                 <h6 className="text-xl font-medium mb-6">PRICE</h6>
                                 <ul className="max-h-[226px] overflow-auto flex flex-col gap-2 text-[#807E7E]">
-                                    {prices.map((prices , key) => (
-                                        <li key={key} className="flex items-center justify-between cursor-pointer"
-                                        // onClick={() => {
-                                        //     if(selectedCategories.includes(prices)){
-                                        //         removeCategory(prices);
-                                        //     } else{
-                                        //         addCategory(prices);
-                                        //     }
-                                        // }}
+                                    {price.map((prices , key) => (
+                                        <li 
+                                        key={key} className="flex items-center justify-between cursor-pointer"
+                                        onClick={() => {
+                                            if(selectedPrices.includes(prices)){
+                                                removePrice(prices);
+                                            } else{
+                                                addPrice(prices);
+                                            }
+                                        }} 
                                         >
-                                        ${prices.label}
-                                        <button className="w-6 h-6 rounded-lg border border-black inline-block "></button>
+                                        ${prices}
+                                        <button className={`w-6 h-6 rounded-lg border border-black inline-block   ${(selectedPrices.includes(prices))? 'bg-gray-200' :'  '} `}></button>
                                          </li>
                                     ))}
                                 </ul>

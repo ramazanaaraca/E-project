@@ -17,7 +17,6 @@ export default function Product() {
 
   return (
     <Wrapper>
-      
       <ul className="flex items-center gap-4 text-[#605F5F] text-sm">
         <li>
             <Link to='/'>Home</Link>

@@ -17,12 +17,13 @@ function Header() {
     const isShopPage = location.pathname.startsWith('/shop');
     const isProfilePage = location.pathname.startsWith('/profile');
     const isOrderPage = location.pathname.startsWith('/order');
+    const isContactPage = location.pathname.startsWith('/contact');
     
     return (
         <Wrapper
         classname={classNames('bg-orange py-[18px]' , 
         {   
-            '!bg-white': isShopPage || isProfilePage || isOrderPage ,
+            '!bg-white': isShopPage || isProfilePage || isOrderPage || isContactPage ,
         }
         )}>
             <div className="flex items-center justify-between">
@@ -58,7 +59,7 @@ function Header() {
                             </Dropdown>
                         </li>
                         <li>
-                           <Link>
+                           <Link to='/contact'>
                                 Contact Us
                            </Link>     
                         </li>

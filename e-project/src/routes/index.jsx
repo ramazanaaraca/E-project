@@ -17,29 +17,21 @@ import Order from "~/pages/order";
 import Shopping from "~/pages/order/shopping";
 import Detail from "~/pages/order/detail";
 import Complate from "~/pages/order/complate";
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { ScrollToTop } from "./scrolltotop";
 import Product from "../pages/Shop/product";
 import Layout from "../layouts";
+import Contact from "../pages/contact";
 
 
-const  ScrollToTop = () => {
-  const { pathname } = useLocation();
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-
-  return null;
-}
 
 const routes = createBrowserRouter([
     {
         path:'/',
         element:(
             <>
-            <WebLayout/>
-            <ScrollToTop/>
+                <WebLayout/>
+                <ScrollToTop/>
             </>
         ),
         children: [
@@ -63,7 +55,7 @@ const routes = createBrowserRouter([
             },
             {
                 path:'/contact',
-                element:<Shop/>
+                element:<Contact/>
             },
             {
                 path:'/profile',

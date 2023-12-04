@@ -25,7 +25,7 @@ export const BEST = [
         slug:'wireless-keyboard',
         sub: 'NEW',
         name: 'Wireless headphones',
-        price: '29',
+        price: '50',
         category:'Headphone'
     },
     {   id:4,
@@ -49,7 +49,7 @@ export const BEST = [
         img: Product,
         sub: 'NEW',
         name: 'Wireless headphones',
-        price: '99',
+        price: '100',
         category:'Microphone'
     },
     {   id:7,
