@@ -14,7 +14,6 @@ function New() {
             </Title>
             <Slider
                 slidesPerView='4'
-                
                 breakpoints={{
                     0: {
                         slidesPerView: 1,

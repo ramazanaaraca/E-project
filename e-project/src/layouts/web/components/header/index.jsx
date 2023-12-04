@@ -5,9 +5,11 @@ import Search from "./search"
 import User from "./user"
 import Shop from "./shop"
 import { Link , useLocation } from "react-router-dom"
-import { SHOP_LINK , PRODUCT_LINK } from "~/utils/consts/menu"
+import {PRODUCT_LINK } from "~/utils/consts/menu"
 import { useAuth } from "~/stores/auth/hooks"
 import classNames from "classnames"
+import Menu from "./menu"
+
 
 function Header() {
 
@@ -17,16 +19,20 @@ function Header() {
     const isShopPage = location.pathname.startsWith('/shop');
     const isProfilePage = location.pathname.startsWith('/profile');
     const isOrderPage = location.pathname.startsWith('/order');
+    const isContactPage = location.pathname.startsWith('/contact');
     
     return (
         <Wrapper
         classname={classNames('bg-orange py-[18px]' , 
         {   
-            '!bg-white': isShopPage || isProfilePage || isOrderPage ,
+            '!bg-white': isShopPage || isProfilePage || isOrderPage || isContactPage ,
         }
         )}>
             <div className="flex items-center justify-between">
-                <Logo variant='header' />
+                <div className="flex flex-row gap-2 items-center">
+                    <div className="block lg:hidden"><Menu /></div>
+                    <Logo variant='header' />
+                </div>
                 <nav className="lg:block hidden">
                     <ul className="flex items-center text-sm font-medium gap-x-10">
                         <li>
@@ -58,16 +64,16 @@ function Header() {
                             </Dropdown>
                         </li>
                         <li>
-                           <Link>
+                           <Link to='/contact'>
                                 Contact Us
                            </Link>     
                         </li>
                     </ul>
                 </nav>
                 <div className="flex items-center gap-x-4">
-                    <Search />
-                    {user ? <User to='/profile' /> : <User to='/login' />}
-                    <Shop /> 
+                    <div className="hidden lg:block"><Search /></div>
+                    <div className="hidden lg:block"><User to={user ? '/profile' : '/login'} /></div>      
+                    <Shop />
                 </div>
             </div>
         </Wrapper>

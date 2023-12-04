@@ -7,7 +7,7 @@ export const SHOP_LINK = [
 
   export const PRODUCT_LINK = [
     {
-      path: '/shop/wireless-mouse',
+      path: '/shop/Headphone/wireless-headphones',
       title: 'Wireless Mouse'
     },
    

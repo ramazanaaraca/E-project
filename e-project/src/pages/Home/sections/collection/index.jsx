@@ -10,7 +10,7 @@ function Collection() {
     <>
      <Wrapper>
         <Title />
-        <div className="lg:grid lg:grid-cols-2 gap-7">
+        <div className="lg:grid lg:grid-cols-2 gap-6">
                 <CollectionItem  collection={COLLECTION[0]}/>
             <div className="flex flex-col justify-between gap-6">
                 <CollectionItem collection={COLLECTION[1]}/>

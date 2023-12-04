@@ -1,7 +1,8 @@
 export const CATEGORIES = [
-    "Headphone",
-    "Wireless headphone",
-    "Mouse",
-    "Microphone",
-    "Keyboard"
+    { category : "Headphone"},
+    { category : "Wireless headphone"},
+    { category : "Mouse"},
+    { category : "Microphone"},
+    { category : "Keyboard"},
+    
 ]

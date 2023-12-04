@@ -5,7 +5,7 @@ import { MdArrowForwardIos } from "react-icons/md";
 
 export default function Product() {
 
-  const { slug } = useParams()
+  const { slug , category } = useParams()
 
   const [id, ...urls] = slug.split('-')
   const url = urls.join('-')
@@ -17,7 +17,6 @@ export default function Product() {
 
   return (
     <Wrapper>
-      
       <ul className="flex items-center gap-4 text-[#605F5F] text-sm">
         <li>
             <Link to='/'>Home</Link>
@@ -26,6 +25,11 @@ export default function Product() {
 
         <li >
             <Link to='/shop'>Shop</Link>
+        </li>
+        <MdArrowForwardIos size={12}/>
+
+        <li >
+            <Link to='/shop'>{Uppercase(category)}</Link>
         </li>
         <MdArrowForwardIos size={12}/>
         <li className="text-black font-medium">
