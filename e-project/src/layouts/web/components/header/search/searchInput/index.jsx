@@ -49,7 +49,7 @@ function SearchInput({onclick}) {
             {
             result.map((item , index) => (
                 <Link
-                onClick={() => onclick()} 
+                onClick={() => onclick} 
                 to={`/shop/${item.category}/${item.slug}`}
                 className='flex flex-col items-start py-2'
                 >
