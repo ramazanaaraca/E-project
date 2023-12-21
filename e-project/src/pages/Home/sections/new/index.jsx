@@ -1,11 +1,22 @@
+import { useEffect, useState } from "react"
 import Card from "~/components/card"
 import Slider from "~/components/slider"
 import Title from "~/components/title"
 import Wrapper from "~/components/wrapper"
-import { NEW } from "~/fake-api/new"
+
 
 
 function New() {
+    
+    const [bestp , setBest] = useState(null)
+
+    useEffect(() => {
+        fetch('http://localhost:3001/best')
+            .then(response => response.json())
+            .then(data => setBest(data))
+            .catch(error => console.error("Error fetching product:", error));
+    }, []);
+
     return (
     <>
         <Wrapper>
@@ -36,7 +47,7 @@ function New() {
                         spaceBetween: 24
                     },
                 }}
-                items={NEW}
+                items={bestp}
                 render={item => <Card item={item}/>}
                     />
         </Wrapper>

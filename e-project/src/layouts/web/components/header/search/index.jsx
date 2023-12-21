@@ -26,9 +26,6 @@ function Search() {
             <Popover.Panel className='h-[100vh] max-w-[413px]  text-black py-10 px-6 '>
               <div className='flex items-center justify-between'>
                 <Logo variant='header' />
-                <button onClick={close}>
-                  <IoClose size={24} />
-                </button>
               </div>
               <SearchInput onClick={close}/>              
             </Popover.Panel>

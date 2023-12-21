@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { BEST } from '~/fake-api/best';
 import { Link } from 'react-router-dom';
 
+
 function SearchInput({onclick}) {
 
     const [searchTerm, setSearchTerm] = useState('');
@@ -37,14 +38,14 @@ function SearchInput({onclick}) {
             className='border border-black rounded-md flex items-center px-4 py-2 gap-2 mt-4'
             >
             <CiSearch size={24} />
-            <input
-                value={searchTerm}
-                onChange={(e) => handleChange(e.target.value)}
-                type='text'
-                id='search'
-                placeholder='Search'
-                className=' outline-none w-full'
-            />
+                <input
+                    value={searchTerm}
+                    onChange={(e) => handleChange(e.target.value)}
+                    type='text'
+                    id='search'
+                    placeholder='Search'
+                    className=' outline-none w-full'
+                />
             </label>
             {
             result.map((item , index) => (

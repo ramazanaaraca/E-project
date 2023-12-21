@@ -10,7 +10,7 @@ export default function Slider({ spaceBetween, slidesPerView, items, render, ...
       spaceBetween={spaceBetween}
       slidesPerView={slidesPerView}
     >
-      {items.map((item, key) => (
+      {items?.map((item, key) => (
         <SwiperSlide key={key}>
           {render(item, key)}
         </SwiperSlide>
@@ -22,8 +22,8 @@ export default function Slider({ spaceBetween, slidesPerView, items, render, ...
 Slider.propTypes = {
   spaceBetween:  PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   slidesPerView: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  items: PropTypes.array.isRequired,
-  render: PropTypes.func.isRequired,
+  items: PropTypes.array,
+  render: PropTypes.func,
   props: PropTypes.object
 }
 

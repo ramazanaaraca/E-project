@@ -1,12 +1,13 @@
 import { useLocation } from 'react-router-dom';
 import ExList from '~/assets/ex.svg'
 import { removeTocard } from '~/stores/cart/actions';
-import { decrementQty, incrementQty } from '~/stores/cart/actions';
+import IncDec from './components/incdec';
+
 
 
 function ShopCart({productcard}) {
 
-    const { qty, img, name, price} = productcard;
+    const { qty , img, name, price} = productcard;
 
     const location = useLocation();
 
@@ -20,11 +21,11 @@ function ShopCart({productcard}) {
                 <div className='flex flex-col lg:flex-row  gap-2 lg:items-center items-start'>
                     <img src={img} alt="" width={80} height={96}/>
                     <div className='flex flex-col items-start gap-2'>
-                        <div className='border rounded-md flex items-center gap-2 p-2 '>
-                                <button onClick={!isOrderPage  ? () => decrementQty(productcard) : undefined}>-</button>
-                                <span>{qty}</span>
-                                <button onClick={!isOrderPage  ? () => incrementQty(productcard) : undefined}>+</button>
-                        </div>
+                        <IncDec
+                        qty={qty}
+                        isOrderPage={isOrderPage}
+                        productcard={productcard}
+                        />
                         <span className='inline-block text-sm font-medium'>{name}</span>
                     </div>
                 </div>

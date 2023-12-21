@@ -10,6 +10,14 @@ import { useEffect, useState } from "react";
   
 
 function Shop() {
+    const [product , setProduct] = useState(null)
+
+  useEffect(() => {
+    fetch('http://localhost:3001/best')
+      .then(response => response.json())
+      .then(data => setProduct(data))
+      .catch(error => console.error("error fetching product:", error))
+  }, []);
     // const { category } = useParams();
     // const { pathname } = useLocation();
     // const formattedPathname = (pathname.replace(/^\/+/, ''));
@@ -127,7 +135,7 @@ function Shop() {
                     <div className="grid lg:grid-cols-3 xl:grid-cols-3 sm:grid-cols-3 grid-cols-2 gap-6">
                         {
                          (
-                            BEST.map((item, index) => (
+                            product?.map((item, index) => (
                             <Card item={item} key={index} />
                             ))
                         )
