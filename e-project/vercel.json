@@ -1,21 +1,8 @@
 {
     "rewrites": [
-      {
-        "source": "/(.*)",
-        "destination": "/"
-      }
-    ],
-    "version": 2,
-    "builds": [
-      {
-        "src": "vercel.json",
-        "use": "@now/node"
-      }
-    ],
-    "functions": {
-      "api/*.js": {
-        "runtime": "@now/node"
-      }
-    }
-  }
-  
+        {
+            "source": "/(.*)",
+            "destination": "/"
+        }
+    ]
+}
